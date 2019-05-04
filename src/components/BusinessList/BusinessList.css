@@ -2,5 +2,21 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin: 4.4rem 10%;
+    margin: 7% 10%;
   }
+
+  /* Reusable Component - Image Container */
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background: #223E4A;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

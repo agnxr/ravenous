@@ -2,29 +2,34 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: url('./background_search_desktop.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 25rem;
+    text-align: center;
+    color: #fff;
+    background-color: #223E4A;
+    padding-bottom: 50px;
   }
+
+.SearchBar p {
+  margin-bottom: 30px;
+  font-weight: bold;
+}
   
-  .SearchBar-sort-options ul {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2.22rem;
-    color: #ffffff;
-  }
+.SearchBar-sort-options ul {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  color: #ffffff;
+}
   
   .SearchBar-sort-options li {
     cursor: pointer;
-    width: 4.33rem;
-    border-bottom: 1px solid #fff;
-    padding: 0 2.58rem .33rem 2.58rem;
-    line-height: 1.13;
+    margin: 0 20px 0 20px;
+    background-color:	#019EFF;
+    width: 66px;
+    padding: 7px 40px 7px 40px;
     text-align: center;
     font-weight: 600;
-    font-size: .83rem;
     transition: color .25s;
+    border-radius: 5px;
   }
   
   .SearchBar-sort-options li:hover {
@@ -33,26 +38,33 @@
   
   .SearchBar-sort-options li.active,
   .SearchBar-sort-options li.active:hover {
-    border-bottom: 1px solid #f0c36c;
-    color: #f0c36c;
+    color: #ffffff;
+    position:relative;
+    top:1px;
+    box-shadow: 0px 10px 30px -12px #e3f2f5;
+    background-color:	rgb(93, 148, 182);
   }
   
   .SearchBar-fields {
     display: flex;
     justify-content: center;
-    margin-bottom: 2.88rem;
+    margin-bottom: 50px;
   }
   
   .SearchBar-fields input {
-    width: 21rem;
-    padding: .66rem 1rem;
-    margin-right: 2.22rem;
+    width: 350px;
+    padding: 10px;
+    margin-right: 40px;
     border: 1px solid #fff;
     border-radius: 4px;
-    font-size: .77rem;
-    font-weight: 500;
+    font-size: 20px;
   }
   
+  .SearchBar-fields input:focus {
+    background-color: #0EBDD8;
+    color: #fff;
+  }
+
   .SearchBar-fields input:last-child {
     margin-right: 0;
   }
@@ -63,8 +75,9 @@
   
   .SearchBar-submit a {
     border-radius: 4px;
-    padding: .72rem 1.7rem;
-    background-color: #cca353;
+    padding: 10px 40%;
+    text-decoration: none;
+    background-color:	#27EF99;
     color: #ffffff;
     font-weight: 600;
     transition: background-color .5s;
@@ -72,13 +85,10 @@
   
   .SearchBar-submit a:hover {
     cursor: pointer;
-    background-color: #a7874b;
+    background-color: rgb(29, 143, 93);
   }
   
   @media only screen and (max-width: 560px) {
-    .SearchBar {
-      background-image: url('./background_search_mobile.jpg');
-    }
   
     .SearchBar-sort-options ul {
       margin-left: 2rem;

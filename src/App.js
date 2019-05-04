@@ -3,6 +3,7 @@ import './App.css';
 import BusinessList from '../src/components/BusinessList/BusinessList';
 import SearchBar from '../src/components/SearchBar/SearchBar';
 import Yelp from './util/Yelp';
+import logo from './logo.png';
 
 /*
 const business = {
@@ -49,9 +50,14 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        <h1>finder</h1>
+        <div className="hero">
+          <img className="logo" alt="Finder" src={logo}/>
+          <h1>Finder</h1>
+        </div>
+        <div>
           <SearchBar searchYelp={this.searchYelp}/>
           <BusinessList businesses={this.state.businesses}/>
+        </div>
       </div>
     );
   }
