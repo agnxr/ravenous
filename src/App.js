@@ -3,6 +3,7 @@ import './App.css';
 import BusinessList from '../src/components/BusinessList/BusinessList';
 import SearchBar from '../src/components/SearchBar/SearchBar';
 import Business from './components/Business/Business';
+import Yelp from './util/Yelp';
 
 const business = {
 
