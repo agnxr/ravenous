@@ -74,7 +74,7 @@ class SearchBar extends React.Component {
                     </ul>
                 </div>
                 <div className="SearchBar-submit">
-                    <a href="www.#.com" onClick={this.handleSearch}>Search</a>
+                    <a href="#list" onClick={this.handleSearch}>Search</a>
                 </div>
             </div>
         );

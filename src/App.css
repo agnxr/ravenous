@@ -27,3 +27,14 @@ body {
 .hero img {
   height: 90px;
 }
+
+@media (max-width: 1199.98px) { 
+
+  .hero h1 {
+    font-size: 80px;
+  }
+  
+  .hero img {
+    height: 60px;
+  }
+ }
