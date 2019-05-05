@@ -5,7 +5,7 @@
     text-align: center;
     color: #fff;
     background-color: #223E4A;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 }
 
 .SearchBar p {
@@ -16,7 +16,7 @@
 .SearchBar-fields {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .SearchBar-fields input {
@@ -108,7 +108,7 @@
     .SearchBar-fields input {
       margin-right: 0;
       margin-bottom: 15px;
-      width: 250px;
+      width: 230px;
     }
   
     .SearchBar-sort-options ul {

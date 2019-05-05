@@ -11,7 +11,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 240px;
+  height: 150px;
   background-color: #223E4A;  
 }
 
@@ -28,7 +28,7 @@ body {
   height: 90px;
 }
 
-@media (max-width: 1199.98px) { 
+@media (max-width: 1200px) { 
 
   .hero h1 {
     font-size: 80px;
@@ -38,3 +38,13 @@ body {
     height: 60px;
   }
  }
+
+ @media (max-width: 575.98px) { 
+  .hero h1 {
+    font-size: 50px;
+  }
+  
+  .hero img {
+    height: 45px;
+  }
+}
