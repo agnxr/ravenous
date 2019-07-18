@@ -1,5 +1,7 @@
 import React from 'react';
-import './SearchBar.css';
+
+
+import background from '../../assets/background.jpg';
 
 const sortByOptions = {
     'Best Match': 'best_match',
@@ -64,6 +66,7 @@ class SearchBar extends React.Component {
         return (
             <div className="SearchBar">
                 <div className="SearchBar-fields">
+                <img src={background} alt="Smiley face" height="42" width="42" />
                     <input onKeyPress={this.handleSearch} onChange={this.handleTermChange} placeholder="Search Businesses" />
                     <input onKeyPress={this.handleSearch} onChange={this.handleLocationChange} placeholder="Where?" />
                 </div>

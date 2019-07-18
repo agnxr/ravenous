@@ -1,10 +1,42 @@
 import React from 'react';
-import './App.css';
+
 import BusinessList from '../src/components/BusinessList/BusinessList';
 import SearchBar from '../src/components/SearchBar/SearchBar';
 import Yelp from './util/Yelp';
-import logo from './logo.png';
 
+import background from './assets/background.jpg';
+import title from './assets/logo.png';
+import logo from './assets/fd.svg';
+
+import styled, {css} from 'styled-components';
+
+const StyledHero = styled.main`
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${background});
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledLogo = styled.img`
+  width: 200px;
+  margin-right: 15px;
+`;
+
+const StyledLogoImg = styled.img`
+  width: 60px;
+  stroke: 1px #fff;
+`;
+const StyledTitle = styled.div`
+ 
+
+
+`;
 /*
 const business = {
 
@@ -30,16 +62,11 @@ const businesses = [
 */
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+ state = {
       businesses: []
-    };
+    }
 
-    this.searchYelp = this.searchYelp.bind(this);
-  }
-
-  searchYelp(term, location,sortBy){
+  searchYelp = (term, location,sortBy) => {
 
     //console.log(`Searching ${term} in location: ${location}, sorted by: ${sortBy}`);
     Yelp.searchYelp(term, location, sortBy).then((businesses) => {
@@ -50,12 +77,15 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        <div className="hero">
-          <img className="logo" alt="Finder" src={logo}/>
-          <h1>Finder</h1>
-        </div>
-        <div>
+        <StyledHero>
+          <StyledTitle>
+            <StyledLogo src={title} alt="ravenous"/>
+            <StyledLogoImg src={logo} alt="ravenous"/>
+          </StyledTitle>
           <SearchBar searchYelp={this.searchYelp}/>
+        </StyledHero>
+        <div>
+
           <BusinessList businesses={this.state.businesses}/>
         </div>
       </div>
