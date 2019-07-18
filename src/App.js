@@ -12,7 +12,7 @@ import styled, {css} from 'styled-components';
 
 const StyledHero = styled.main`
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${background});
-  height: 100vh;
+  height: 90vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -32,11 +32,7 @@ const StyledLogoImg = styled.img`
   width: 60px;
   stroke: 1px #fff;
 `;
-const StyledTitle = styled.div`
- 
 
-
-`;
 /*
 const business = {
 
@@ -78,14 +74,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <StyledHero>
-          <StyledTitle>
+          <div>
             <StyledLogo src={title} alt="ravenous"/>
             <StyledLogoImg src={logo} alt="ravenous"/>
-          </StyledTitle>
+          </div>
           <SearchBar searchYelp={this.searchYelp}/>
         </StyledHero>
         <div>
-
           <BusinessList businesses={this.state.businesses}/>
         </div>
       </div>

@@ -1,8 +1,86 @@
 import React from 'react';
+import glass from '../../assets/magnifying-glass.svg';
+import styled, {css} from 'styled-components';
 
 
-import background from '../../assets/background.jpg';
+const StyledSubmit = styled.input`
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border: none;
+  background-color: #d22828;
+  cursor: pointer;
+  background-image: url(${glass});
+  background-repeat: no-repeat;
+  background-size: 35%;
+  background-position: 20px 10px;
+  width: 65px;
+  height: 45px;
+  font-size: 20px;
+  transition: 1s;
+    &:hover {
+        background-color: #bd2525;
+    }
+`;
 
+const StyledInput = styled.input`
+    font-family: 'Quicksand', sans-serif;
+  background-color: #fff;
+  border: 10px solid red;
+  border: none;
+
+  min-width: 200px;
+  width: 30vw;
+  color: #666;
+  font-size: 20px;
+  
+  padding: 10px 20px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+    ::placeholder {
+        color: #ccc; 
+    }
+    &:last-child {
+        border-right: 1px solid #ccc;
+    }
+`;
+
+const StyledInputWrapper = styled.div`
+  display: inline-block;
+`;
+
+const StyledSortOptions = styled.div`
+    font-family: 'Quicksand', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  line-height: 50px;
+
+`;
+
+const StyledOptions = styled.div`
+  display: flex;
+  justify-content: center;
+
+`;
+
+const StyledLabel = styled.label`
+
+
+    color: #666;
+    background-color: #fff;
+
+    padding: 10px 20px;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    &:first-child {
+        border-radius: 4px 0 0 4px;
+    }
+
+`;
 const sortByOptions = {
     'Best Match': 'best_match',
     'Highest Rated': 'rating',
@@ -15,7 +93,7 @@ class SearchBar extends React.Component {
         this.state = {
             term: '',
             location: '',
-            sortBy: 'best_match'
+            sortBy: 'best_match',
         };
 
     this.handleTermChange  = this.handleTermChange.bind(this);
@@ -33,7 +111,6 @@ class SearchBar extends React.Component {
         return '';
     };
 
-    //set the state of sorting option --> communicate to API
 
     hadnleSortByChange(sortByOption){
         this.setState({sortBy: sortByOption});
@@ -58,7 +135,18 @@ class SearchBar extends React.Component {
     renderSortByOptions() {
         return Object.keys(sortByOptions).map(sortByOption => {
             let sortByOptionValue = sortByOptions[sortByOption];
-            return <li key={sortByOptionValue} className={this.getSortByClass(sortByOptionValue)} onClick={this.hadnleSortByChange.bind(this,sortByOptionValue)}>{sortByOption}</li>
+            return (
+ <li 
+ key={sortByOptionValue} 
+ className={this.getSortByClass(sortByOptionValue)} 
+ onClick={this.hadnleSortByChange.bind(this,sortByOptionValue)}>
+ <img 
+ src={this.state.img} 
+ alt="Smiley face" height="42" width="42"></img>
+ {sortByOption}
+ </li>
+            )
+           
         });
       }
 
@@ -66,19 +154,21 @@ class SearchBar extends React.Component {
         return (
             <div className="SearchBar">
                 <div className="SearchBar-fields">
-                <img src={background} alt="Smiley face" height="42" width="42" />
-                    <input onKeyPress={this.handleSearch} onChange={this.handleTermChange} placeholder="Search Businesses" />
-                    <input onKeyPress={this.handleSearch} onChange={this.handleLocationChange} placeholder="Where?" />
+                    <StyledInputWrapper>
+                   
+                        <StyledLabel for="name">Find</StyledLabel>
+                        <StyledInput name="name" id="name" onKeyPress={this.handleSearch} onChange={this.handleTermChange} placeholder="burgers, pizza, bars..." /> 
+                    </StyledInputWrapper>
+                    <StyledLabel for="location">Near</StyledLabel>
+                    <StyledInput name="location" id="location" onKeyPress={this.handleSearch} onChange={this.handleLocationChange} placeholder="Warsaw, PL" />
+                    <StyledSubmit onClick={this.handleSearch} type="submit" value=" " />
                 </div>
-                <div className="SearchBar-sort-options">
-                    <p>Sort by:</p>
-                    <ul>
-                    {this.renderSortByOptions()}
-                    </ul>
-                </div>
-                <div className="SearchBar-submit">
-                    <a href="#list" onClick={this.handleSearch}>Search</a>
-                </div>
+                <StyledSortOptions>
+                <p>sort by:</p>
+                    <StyledOptions>
+                        {this.renderSortByOptions()}
+                    </StyledOptions>
+                </StyledSortOptions>
             </div>
         );
     }
