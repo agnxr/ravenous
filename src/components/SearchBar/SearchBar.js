@@ -111,6 +111,15 @@ const StyledLabel = styled.label`
     }
 `;
 
+const StyledAlert = styled.div`
+    background-color: #fff;
+    height: 60px;
+    display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+`;
+
 const OptionImg = styled.img`
     width: 20px;
     height: 20px;
@@ -132,6 +141,7 @@ class SearchBar extends React.Component {
         term: '',
         location: '',
         sortBy: 'best_match',
+        alertText: 'eeee',
     }
 
 
@@ -150,7 +160,9 @@ class SearchBar extends React.Component {
     }
 
     handleTermChange = (event) => {
-        this.setState({term: event.target.value});
+   
+        this.setState({term: event.target.value})
+        
     }
 
     handleLocationChange = (event) => {
@@ -158,7 +170,10 @@ class SearchBar extends React.Component {
     }
 
     handleSearch = (event) => {
-        if (event.key === 'Enter' || event.type === 'click') {
+    
+        if (this.state.term.length < 1 || this.state.location.length < 1 ) {
+            this.setState({alertText: "Wpisz cos"})  
+        } else if (event.key === 'Enter' || event.type === 'click') {
             this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
             event.preventDefault(); 
         } 
@@ -192,6 +207,7 @@ class SearchBar extends React.Component {
         return (
             <div className="SearchBar">
                 <div>
+                <StyledAlert>{this.state.alertText}</StyledAlert>
                     <StyledLabel for="name">Find</StyledLabel>
                     <StyledInput 
                         name="name" 

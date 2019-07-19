@@ -28,6 +28,10 @@ const StyledLogo = styled.img`
   margin-right: 15px;
 `;
 
+const StyledAlert = styled.div`
+  background-color: red;
+`;
+
 const StyledLogoImg = styled.img`
   width: 60px;
   stroke: 1px #fff;
@@ -57,19 +61,29 @@ const businesses = [
 ];
 */
 
+
 class App extends React.Component {
  state = {
       businesses: [],
       error: '',
+      showAlert: false,
+      alert: "ttttttttttttttttt",
     }
 
   searchYelp = (term, location,sortBy) => {
 
-    //console.log(`Searching ${term} in location: ${location}, sorted by: ${sortBy}`);
     Yelp.searchYelp(term, location, sortBy).then((businesses) => {
+
       this.setState({ businesses: businesses });
     });
+
+    if (this.state.businesses.length < 1) {
+      this.setState({ showAlert: true });
+
+    }
   }
+
+
 
   render(){
     return (
@@ -79,10 +93,19 @@ class App extends React.Component {
             <StyledLogo src={title} alt="ravenous"/>
             <StyledLogoImg src={logo} alt="ravenous"/>
           </div>
+  
+
+          { this.state.showAlert ? 
+           <StyledAlert>nic nie znaleziono</StyledAlert> : null }
           <SearchBar searchYelp={this.searchYelp}/>
         </StyledHero>
         <div>
-          <BusinessList businesses={this.state.businesses}/>
+
+         
+         
+           <BusinessList businesses={this.state.businesses}/> 
+          
+          
         </div>
       </div>
     );
