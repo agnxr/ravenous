@@ -3,10 +3,12 @@ import glass from '../../assets/magnifying-glass.svg';
 import goal from '../../assets/goal.svg';
 import star from '../../assets/star.svg';
 import review from '../../assets/testimonial.svg';
+import AnchorLink from 'react-anchor-link-smooth-scroll'
+
 import styled, {css} from 'styled-components';
 
 
-const StyledSubmit = styled.input`
+const StyledSubmit = styled(AnchorLink)`
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
   border: none;
@@ -135,6 +137,7 @@ const sortByOptions = {
     'Most Reviewed': 'review_count'
 };
 
+
 class SearchBar extends React.Component {
 
     state = {
@@ -206,6 +209,8 @@ class SearchBar extends React.Component {
     render(){
         return (
             <div className="SearchBar">
+                <AnchorLink href='#items'>Go to items</AnchorLink>
+ 
                 <div>
                 <StyledAlert>{this.state.alertText}</StyledAlert>
                     <StyledLabel for="name">Find</StyledLabel>
@@ -225,13 +230,15 @@ class SearchBar extends React.Component {
                         onChange={this.handleLocationChange} 
                         placeholder="Warsaw, PL" 
                     />
-                    <StyledSubmit onClick={this.handleSearch} type="submit" value=" " />
+                
+                    <StyledSubmit href='#items' onClick={this.handleSearch} type="submit" value=" ">szukajj</StyledSubmit>
                 </div>
                 <StyledSortOptions>
                     <StyledOptions>
                         {this.renderSortByOptions()}
                     </StyledOptions>
                 </StyledSortOptions>
+
             </div>
         );
     }

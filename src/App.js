@@ -10,11 +10,13 @@ import background from './assets/background.jpg';
 import title from './assets/logo.png';
 import logo from './assets/fd.svg';
 
+
+
 import styled, {css} from 'styled-components';
 
 const StyledHero = styled.main`
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${background});
-  height: 90vh;
+  height: 110vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -91,6 +93,7 @@ class App extends React.Component {
         <Loader /> : null
         }
          
+         <div id='items'>eloo</div>
            <BusinessList businesses={this.state.businesses}/> 
           
           
