@@ -1,5 +1,10 @@
 import React from 'react';
 import glass from '../../assets/magnifying-glass.svg';
+import goal from '../../assets/goal.svg';
+import star from '../../assets/star.svg';
+import review from '../../assets/testimonial.svg';
+
+
 import styled, {css} from 'styled-components';
 
 
@@ -27,26 +32,23 @@ const StyledInput = styled.input`
   background-color: #fff;
   border: 10px solid red;
   border: none;
-
   min-width: 200px;
   width: 30vw;
   color: #666;
   font-size: 20px;
-  
   padding: 10px 20px;
   margin-top: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 10px;
     ::placeholder {
         color: #ccc; 
     }
-    &:last-child {
+    &:nth-child(2) {
         border-right: 1px solid #ccc;
     }
+ 
 `;
 
-const StyledInputWrapper = styled.div`
-  display: inline-block;
-`;
+
 
 const StyledSortOptions = styled.div`
     font-family: 'Quicksand', sans-serif;
@@ -57,7 +59,6 @@ const StyledSortOptions = styled.div`
   text-align: center;
   font-weight: bold;
   line-height: 50px;
-
 `;
 
 const StyledOptions = styled.div`
@@ -66,12 +67,24 @@ const StyledOptions = styled.div`
 
 `;
 
+
+const StyledOption = styled.li`
+list-style: none;
+font-weight: normal;
+
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 20px;
+
+
+
+`;
+
+
 const StyledLabel = styled.label`
-
-
     color: #666;
     background-color: #fff;
-
     padding: 10px 20px;
     font-weight: bold;
     font-family: 'Quicksand', sans-serif;
@@ -79,7 +92,15 @@ const StyledLabel = styled.label`
     &:first-child {
         border-radius: 4px 0 0 4px;
     }
+`;
 
+const OptionImg = styled.img`
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    &:first-child {
+        border-radius: 4px 0 0 4px;
+    }
 `;
 const sortByOptions = {
     'Best Match': 'best_match',
@@ -88,22 +109,16 @@ const sortByOptions = {
 };
 
 class SearchBar extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
+
+        state = {
             term: '',
             location: '',
             sortBy: 'best_match',
-        };
+        }
 
-    this.handleTermChange  = this.handleTermChange.bind(this);
-    this.handleLocationChange  = this.handleLocationChange.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
-
-    }
 
     //returns the current CSS class for a sorting option -> visual feedback
-    getSortByClass(sortByOption) {
+    getSortByClass = (sortByOption) => {
         if (this.state.sortBy === sortByOption) {
             return 'active';
         } 
@@ -112,39 +127,41 @@ class SearchBar extends React.Component {
     };
 
 
-    hadnleSortByChange(sortByOption){
+    hadnleSortByChange = (sortByOption) => {
         this.setState({sortBy: sortByOption});
     }
 
-    handleTermChange(event){
+    handleTermChange = (event) => {
         this.setState({term: event.target.value});
     }
 
-    handleLocationChange(event){
+    handleLocationChange = (event) => {
         this.setState({ location: event.target.value});
     }
 
-    handleSearch(event){
+    handleSearch = (event) => {
         if (event.key === 'Enter' || event.type === 'click') {
             this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
-            event.preventDefault(); //prevent the default action of clicking a link from triggering at the end of the method.
+            event.preventDefault(); 
         } 
     }
     
 
-    renderSortByOptions() {
+    renderSortByOptions = () => {
         return Object.keys(sortByOptions).map(sortByOption => {
             let sortByOptionValue = sortByOptions[sortByOption];
             return (
- <li 
+ <StyledOption 
  key={sortByOptionValue} 
- className={this.getSortByClass(sortByOptionValue)} 
  onClick={this.hadnleSortByChange.bind(this,sortByOptionValue)}>
- <img 
- src={this.state.img} 
- alt="Smiley face" height="42" width="42"></img>
+ <OptionImg 
+ src={
+     sortByOptionValue === 'best_match' ? goal : 
+     sortByOptionValue === 'rating' ? star: review
+     } 
+ alt={sortByOptionValue}/>
  {sortByOption}
- </li>
+ </StyledOption>
             )
            
         });
@@ -153,18 +170,27 @@ class SearchBar extends React.Component {
     render(){
         return (
             <div className="SearchBar">
-                <div className="SearchBar-fields">
-                    <StyledInputWrapper>
-                   
-                        <StyledLabel for="name">Find</StyledLabel>
-                        <StyledInput name="name" id="name" onKeyPress={this.handleSearch} onChange={this.handleTermChange} placeholder="burgers, pizza, bars..." /> 
-                    </StyledInputWrapper>
+                <div>
+                    <StyledLabel for="name">Find</StyledLabel>
+                    <StyledInput 
+                        name="name" 
+                        id="name" 
+                        onKeyPress={this.handleSearch} 
+                        onChange={this.handleTermChange} 
+                        placeholder="burgers, pizza, bars..." 
+                    /> 
+
                     <StyledLabel for="location">Near</StyledLabel>
-                    <StyledInput name="location" id="location" onKeyPress={this.handleSearch} onChange={this.handleLocationChange} placeholder="Warsaw, PL" />
+                    <StyledInput 
+                        name="location" 
+                        id="location" 
+                        onKeyPress={this.handleSearch} 
+                        onChange={this.handleLocationChange} 
+                        placeholder="Warsaw, PL" 
+                    />
                     <StyledSubmit onClick={this.handleSearch} type="submit" value=" " />
                 </div>
                 <StyledSortOptions>
-                <p>sort by:</p>
                     <StyledOptions>
                         {this.renderSortByOptions()}
                     </StyledOptions>

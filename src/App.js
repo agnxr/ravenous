@@ -59,7 +59,8 @@ const businesses = [
 
 class App extends React.Component {
  state = {
-      businesses: []
+      businesses: [],
+      error: '',
     }
 
   searchYelp = (term, location,sortBy) => {
