@@ -46,24 +46,25 @@ class App extends React.Component {
       error: '',
       showAlert: false,
       alert: "ttttttttttttttttt",
-      info: 'to info'
+      info: 'to info',
+      loader: false
     }
 
 
    
 
   searchYelp = (term, location,sortBy) => {
-    this.setState({ info: '', error: '' })
+    this.setState({ info: '', error: '', loader: true })
 
     Yelp.searchYelp(term, location, sortBy)
     .then((json) => {
       if (json.length < 1) {
-        this.setState({ info: 'BRAK WYNIKOW' })
+        this.setState({ info: 'BRAK WYNIKOW', loader: false })
       } else {
-        this.setState({ businesses: json })
+        this.setState({ businesses: json, loader: false })
       }
     })
-    .catch(error => this.setState({ error: `An error occured. Please try again.` }))
+    .catch(error => this.setState({ error: `An error occured. Please try again.`, loader: false }))
 }
 
 
@@ -76,7 +77,7 @@ class App extends React.Component {
             <StyledLogo src={title} alt="ravenous"/>
             <StyledLogoImg src={logo} alt="ravenous"/>
           </div>
-          <Loader />
+
   
 <StyledAlert>{this.state.error}</StyledAlert>
 
@@ -86,7 +87,9 @@ class App extends React.Component {
         </StyledHero>
         <div>
 
-         
+        { this.state.loader ?
+        <Loader /> : null
+        }
          
            <BusinessList businesses={this.state.businesses}/> 
           
