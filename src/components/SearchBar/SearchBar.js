@@ -3,8 +3,6 @@ import glass from '../../assets/magnifying-glass.svg';
 import goal from '../../assets/goal.svg';
 import star from '../../assets/star.svg';
 import review from '../../assets/testimonial.svg';
-
-
 import styled, {css} from 'styled-components';
 
 
@@ -29,58 +27,77 @@ const StyledSubmit = styled.input`
 
 const StyledInput = styled.input`
     font-family: 'Quicksand', sans-serif;
-  background-color: #fff;
-  border: 10px solid red;
-  border: none;
-  min-width: 200px;
-  width: 30vw;
-  color: #666;
-  font-size: 20px;
-  padding: 10px 20px;
-  margin-top: 60px;
-  margin-bottom: 10px;
+    background-color: #fff;
+    border: 10px solid red;
+    border: none;
+    min-width: 200px;
+    width: 30vw;
+    color: #666;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin-top: 60px;
+    margin-bottom: 10px;
     ::placeholder {
         color: #ccc; 
     }
     &:nth-child(2) {
         border-right: 1px solid #ccc;
     }
- 
 `;
-
-
 
 const StyledSortOptions = styled.div`
     font-family: 'Quicksand', sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: #fff;
-  text-align: center;
-  font-weight: bold;
-  line-height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    line-height: 50px;
 `;
 
 const StyledOptions = styled.div`
   display: flex;
   justify-content: center;
-
 `;
 
+
+const StyledBtn = styled.button`
+    padding: 20px;
+    border: 1px solid #03175b;
+    background-color: #fff;
+    margin: 20px;
+    margin-top: -10px;
+    border-radius: 25px;
+    letter-spacing: 3px;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+    ${({active}) => (
+        active && css `
+        border: 3px solid #030221;
+        `
+    )}
+`;
 
 const StyledOption = styled.li`
-list-style: none;
-font-weight: normal;
+    list-style: none;
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    &:hover {
+        text-decoration: underline;
+    }
 
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 20px;
-
-
-
+    cursor: pointer;
+    ${({active}) => (
+        active && css `
+        font-weight: bold;
+        text-decoration: underline;
+        `
+    )}
 `;
-
 
 const StyledLabel = styled.label`
     color: #666;
@@ -102,6 +119,7 @@ const OptionImg = styled.img`
         border-radius: 4px 0 0 4px;
     }
 `;
+
 const sortByOptions = {
     'Best Match': 'best_match',
     'Highest Rated': 'rating',
@@ -110,11 +128,11 @@ const sortByOptions = {
 
 class SearchBar extends React.Component {
 
-        state = {
-            term: '',
-            location: '',
-            sortBy: 'best_match',
-        }
+    state = {
+        term: '',
+        location: '',
+        sortBy: 'best_match',
+    }
 
 
     //returns the current CSS class for a sorting option -> visual feedback
@@ -153,7 +171,9 @@ class SearchBar extends React.Component {
             return (
  <StyledOption 
  key={sortByOptionValue} 
- onClick={this.hadnleSortByChange.bind(this,sortByOptionValue)}>
+ onClick={this.hadnleSortByChange.bind(this,sortByOptionValue)}
+ active={this.state.sortBy === sortByOptionValue ? true : false }
+ >
  <OptionImg 
  src={
      sortByOptionValue === 'best_match' ? goal : 
@@ -166,6 +186,7 @@ class SearchBar extends React.Component {
            
         });
       }
+
 
     render(){
         return (
