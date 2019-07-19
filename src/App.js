@@ -2,6 +2,8 @@ import React from 'react';
 
 import BusinessList from '../src/components/BusinessList/BusinessList';
 import SearchBar from '../src/components/SearchBar/SearchBar';
+import Loader from '../src/components/Loader/Loader';
+
 import Yelp from './util/Yelp';
 
 import background from './assets/background.jpg';
@@ -37,30 +39,6 @@ const StyledLogoImg = styled.img`
   stroke: 1px #fff;
 `;
 
-/*
-const business = {
-
-  imageSrc: 'https://s3.amazonaws.com/codecademy-content/programs/react/ravenous/pizza.jpg',
-name: 'MarginOtto Pizzeria',
-address: '1010 Paddington Way',
-city: 'Flavortown',
-state: 'NY',
-zipCode: '10101',
-category: 'Italian',
-rating: 4.5,
-reviewCount: 90
-}
-
-const businesses = [
-  business,
-  business,
-  business,
-  business,
-  business,
-  business,
-];
-*/
-
 
 class App extends React.Component {
  state = {
@@ -68,20 +46,25 @@ class App extends React.Component {
       error: '',
       showAlert: false,
       alert: "ttttttttttttttttt",
+      info: 'to info'
     }
+
+
+   
 
   searchYelp = (term, location,sortBy) => {
+    this.setState({ info: '', error: '' })
 
-    Yelp.searchYelp(term, location, sortBy).then((businesses) => {
-
-      this.setState({ businesses: businesses });
-    });
-
-    if (this.state.businesses.length < 1) {
-      this.setState({ showAlert: true });
-
-    }
-  }
+    Yelp.searchYelp(term, location, sortBy)
+    .then((json) => {
+      if (json.length < 1) {
+        this.setState({ info: 'BRAK WYNIKOW' })
+      } else {
+        this.setState({ businesses: json })
+      }
+    })
+    .catch(error => this.setState({ error: `An error occured. Please try again.` }))
+}
 
 
 
@@ -93,10 +76,12 @@ class App extends React.Component {
             <StyledLogo src={title} alt="ravenous"/>
             <StyledLogoImg src={logo} alt="ravenous"/>
           </div>
+          <Loader />
   
+<StyledAlert>{this.state.error}</StyledAlert>
 
-          { this.state.showAlert ? 
-           <StyledAlert>nic nie znaleziono</StyledAlert> : null }
+<StyledAlert>{this.state.info}</StyledAlert>
+         
           <SearchBar searchYelp={this.searchYelp}/>
         </StyledHero>
         <div>

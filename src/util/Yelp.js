@@ -24,7 +24,7 @@ const Yelp = {
                     reviewCount: business.review_count
                     };
                 }));
-            }
+            } 
         })
     }
 };
