@@ -157,11 +157,6 @@ class SearchBar extends React.Component {
         return '';
     };
 
-
-    hadnleSortByChange = (sortByOption) => {
-        this.setState({sortBy: sortByOption});
-    }
-
     handleTermChange = (event) => {
    
         this.setState({term: event.target.value})
@@ -181,7 +176,13 @@ class SearchBar extends React.Component {
             event.preventDefault(); 
         } 
     }
-    
+
+
+    hadnleSortByChange = (sortByOption) => {
+        this.setState({sortBy: sortByOption}); 
+       // this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+       // this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+    }
 
     renderSortByOptions = () => {
         return Object.keys(sortByOptions).map(sortByOption => {
@@ -189,7 +190,10 @@ class SearchBar extends React.Component {
             return (
  <StyledOption 
  key={sortByOptionValue} 
+ 
  onClick={this.hadnleSortByChange.bind(this,sortByOptionValue)}
+
+
  active={this.state.sortBy === sortByOptionValue ? true : false }
  >
  <OptionImg 

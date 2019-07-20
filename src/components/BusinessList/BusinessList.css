@@ -14,9 +14,15 @@
   overflow: hidden;
   background: #223E4A;
 }
+.image-container img a {
+background-color: red;
+
+ 
+}
 
 .image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  height: auto;
 }
