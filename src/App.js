@@ -32,8 +32,10 @@ const StyledLogoImg = styled.img`
   stroke: 1px #fff;
 `;
 
-const StyledAlert = styled.div`
-  background-color: red;
+const StyledAlert = styled.p`
+  text-align: center;
+  color: #d22828;
+  margin-top: 15px;
 `;
 
 class App extends React.Component {

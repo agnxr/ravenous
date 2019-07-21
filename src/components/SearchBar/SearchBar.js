@@ -6,6 +6,35 @@ import goal from '../../assets/goal.svg';
 import star from '../../assets/star.svg';
 import review from '../../assets/testimonial.svg';
 
+const StyledLabel = styled.label`
+    color: #666;
+    background-color: #fff;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 20px;
+    &:nth-child(2) {
+        border-radius: 4px 0 0 4px;
+    }
+`;
+
+const StyledInput = styled.input`
+    font-family: 'Quicksand', sans-serif;
+    background-color: #fff;
+    border: none;
+    min-width: 120px;
+    width: 30vw;
+    color: #666;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    ::placeholder {
+        color: #ccc; 
+    }
+    &:nth-child(3) {
+        border-right: 1px solid #ccc;
+    }
+`;
+
 const StyledSubmit = styled(AnchorLink)`
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
@@ -22,26 +51,6 @@ const StyledSubmit = styled(AnchorLink)`
   transition: 1s;
     &:hover {
         background-color: #bd2525;
-    }
-`;
-
-const StyledInput = styled.input`
-    font-family: 'Quicksand', sans-serif;
-    background-color: #fff;
-    border: 10px solid red;
-    border: none;
-    min-width: 200px;
-    width: 30vw;
-    color: #666;
-    font-size: 20px;
-    padding: 10px 20px;
-    margin-top: 60px;
-    margin-bottom: 10px;
-    ::placeholder {
-        color: #ccc; 
-    }
-    &:nth-child(2) {
-        border-right: 1px solid #ccc;
     }
 `;
 
@@ -99,25 +108,14 @@ const StyledOption = styled.li`
     )}
 `;
 
-const StyledLabel = styled.label`
-    color: #666;
-    background-color: #fff;
-    padding: 10px 20px;
-    font-weight: bold;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 20px;
-    &:first-child {
-        border-radius: 4px 0 0 4px;
-    }
-`;
 
-const StyledAlert = styled.div`
-    background-color: #fff;
-    height: 60px;
-    display: flex;
-justify-content: center;
-align-items: center;
+
+const StyledAlert = styled.p`
 text-align: center;
+color: #fff;
+margin-bottom: 10px;
+font-style: italic;
+opacity: 0.8;
 `;
 
 const OptionImg = styled.img`
@@ -142,7 +140,7 @@ class SearchBar extends React.Component {
         term: '',
         location: '',
         sortBy: 'best_match',
-        alertText: 'eeee',
+        alertText: '',
     }
 
     getSortByClass = (sortByOption) => {
