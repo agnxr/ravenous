@@ -10,6 +10,10 @@ http://agnxr.github.io/ravenous
 
 ## 🔨 Technologies 
 
+* React
+* Interacting with the Yelp API
+* Styled Components
+
 ## 🕹 Features
 
 Here’s a quick overview of Ravenous features:
@@ -41,33 +45,13 @@ yarn or npm install
 Start developing your own website:
 
 ```bash
-yarn start
+yarn or npm start
 ```
 
 Open in your browser:
 
 ```bash
 http://localhost:3000
-```
-
-## 👌 Production
-
-Production build of the website:
-
-```bash
-yarn build
-```
-
-Serve build files on your local server:
-
-```bash
-yarn serve
-```
-
-Open in your browser:
-
-```bash
-http://localhost:5000
 ```
 
 ## 📜 License
