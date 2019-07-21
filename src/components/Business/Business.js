@@ -17,7 +17,10 @@ class Business extends React.Component {
             <h2>{business.name}</h2>
             <div className="Business-information">
                 <div className="Business-address">
-                    <p>{business.adress}</p>
+                <a target=" _blank" href={`https://maps.google.com/?q=${business.name},${business.address}&sll=${business.lat},${business.long}`}>aaadreeeess</a>
+ 
+                
+                    <p>{business.address}</p>
                     <p>{business.city}</p>
                     <p>{business.state} {business.zipCode}</p>
                 </div>
@@ -25,7 +28,6 @@ class Business extends React.Component {
                     <h3>{business.category}</h3>
                     <h3 className="rating">{business.rating} stars</h3>
                     <p>{business.reviewCount} reviews</p>
-                    <p><a href={business.url}>url</a></p>
                 </div>
             </div>
         </div>

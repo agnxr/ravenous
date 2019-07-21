@@ -22,7 +22,9 @@ const Yelp = {
                     category: business.categories[0].title,
                     rating: business.rating,
                     reviewCount: business.review_count,
-                    url: business.url
+                    url: business.url,
+                    lat: business.coordinates.latitude,
+                    long: business.coordinates.longitude,
                     };
                 }));
             } 
