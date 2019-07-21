@@ -6,14 +6,25 @@ import goal from '../../assets/goal.svg';
 import star from '../../assets/star.svg';
 import review from '../../assets/testimonial.svg';
 
+const StyledForm = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 const StyledLabel = styled.label`
     color: #666;
     background-color: #fff;
-    padding: 10px 20px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    height: 45px;
     font-weight: bold;
     font-size: 20px;
     &:nth-child(2) {
         border-radius: 4px 0 0 4px;
+    }
+    @media (max-width: 648px) {
+        display: none;
     }
 `;
 
@@ -21,8 +32,8 @@ const StyledInput = styled.input`
     font-family: 'Quicksand', sans-serif;
     background-color: #fff;
     border: none;
-    min-width: 120px;
-    width: 30vw;
+
+    max-width: 25vw;
     color: #666;
     font-size: 20px;
     padding: 10px 20px;
@@ -30,21 +41,25 @@ const StyledInput = styled.input`
     ::placeholder {
         color: #ccc; 
     }
-    &:nth-child(3) {
+    &:nth-child(2) {
         border-right: 1px solid #ccc;
+    }
+    &:nth-child(3) {
+        border-left: 1px solid #ccc;
     }
 `;
 
 const StyledSubmit = styled(AnchorLink)`
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
   border: none;
   background-color: #d22828;
   cursor: pointer;
-  background-image: url(${glass});
-  background-repeat: no-repeat;
-  background-size: 35%;
-  background-position: 20px 10px;
+
   width: 65px;
   height: 45px;
   font-size: 20px;
@@ -52,6 +67,10 @@ const StyledSubmit = styled(AnchorLink)`
     &:hover {
         background-color: #bd2525;
     }
+`;
+
+const StyledImg = styled.img`
+  width: 25px;
 `;
 
 const StyledSortOptions = styled.div`
@@ -63,11 +82,18 @@ const StyledSortOptions = styled.div`
     text-align: center;
     font-weight: bold;
     line-height: 50px;
+    @media (max-width: 768px) {
+        line-height: 10px;
+    }
+
 `;
 
 const StyledOptions = styled.div`
   display: flex;
   justify-content: center;
+  @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `;
 
 
@@ -228,8 +254,8 @@ class SearchBar extends React.Component {
     render(){
         return (
             <div className="SearchBar">
-                <div>
                 <StyledAlert>{this.state.alertText}</StyledAlert>
+                <StyledForm>
                     <StyledLabel for="name">Find</StyledLabel>
                     <StyledInput 
                         name="name" 
@@ -248,8 +274,8 @@ class SearchBar extends React.Component {
                         placeholder="Warsaw, PL" 
                     />
                 
-                    <StyledSubmit href='#items' onClick={this.handleSearch} type="submit" value=" ">szukajj</StyledSubmit>
-                </div>
+                    <StyledSubmit href='#items' onClick={this.handleSearch} type="submit" value=" "><StyledImg src={glass} alt="ravenous"/></StyledSubmit>
+                </StyledForm>
                 <StyledSortOptions>
                     <StyledOptions>
                         {this.renderSortByOptions()}
