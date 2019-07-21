@@ -1,12 +1,10 @@
 import React from 'react';
+import AnchorLink from 'react-anchor-link-smooth-scroll'
+import styled, {css} from 'styled-components';
 import glass from '../../assets/magnifying-glass.svg';
 import goal from '../../assets/goal.svg';
 import star from '../../assets/star.svg';
 import review from '../../assets/testimonial.svg';
-import AnchorLink from 'react-anchor-link-smooth-scroll'
-
-import styled, {css} from 'styled-components';
-
 
 const StyledSubmit = styled(AnchorLink)`
   border-bottom-right-radius: 10px;
@@ -140,7 +138,6 @@ const sortByOptions = {
 
 
 class SearchBar extends React.Component {
-
     state = {
         term: '',
         location: '',
@@ -148,30 +145,31 @@ class SearchBar extends React.Component {
         alertText: 'eeee',
     }
 
-
-    //returns the current CSS class for a sorting option -> visual feedback
     getSortByClass = (sortByOption) => {
         if (this.state.sortBy === sortByOption) {
             return 'active';
         } 
-        
         return '';
     };
 
     handleTermChange = (event) => {
-   
-        this.setState({term: event.target.value})
-        
+        this.setState({
+            term: event.target.value
+        })
     }
 
     handleLocationChange = (event) => {
-        this.setState({ location: event.target.value});
+        this.setState({ 
+            location: event.target.value
+        });
     }
 
     handleSearch = (event) => {
-    
+        this.setState({
+            alertText: ''
+        })
         if (this.state.term.length < 1 || this.state.location.length < 1 ) {
-            this.setState({alertText: "Wpisz cos"})  
+            this.setState({alertText: "Please fill out both fields."})  
         } else if (event.key === 'Enter' || event.type === 'click') {
             this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
             event.preventDefault(); 
@@ -182,17 +180,26 @@ class SearchBar extends React.Component {
     hadnleSortByChange = (sortByOption) => {
         
         this.setState({sortBy: sortByOption});
-       // this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
-        this.props.searchYelp(this.state.term, this.state.location, sortByOption);  
-       
+        
+        if (this.state.term && this.state.location) {
+            this.setState({
+                alertText: ''
+            })
+            this.props.searchYelp(
+                this.state.term, 
+                this.state.location, 
+                sortByOption
+            );     
+        } else {
+            this.setState({
+                alertText: "Please fill out both fields."
+            })
+        }
     }
 
 
 
-    elo = (sortByOption) => {
-     
-        this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy); 
-    }
+
 
     renderSortByOptions = () => {
         return Object.keys(sortByOptions).map(sortByOption => {
