@@ -177,11 +177,21 @@ class SearchBar extends React.Component {
         } 
     }
 
-
+ 
     hadnleSortByChange = (sortByOption) => {
-        this.setState({sortBy: sortByOption}); 
+        if (sortByOption) {
+        this.setState({sortBy: sortByOption});
+        } else {
+            this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+        }
        // this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
-       // this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+        //this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);  
+        
+    }
+
+    elo = (sortByOption) => {
+     
+        this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy); 
     }
 
     renderSortByOptions = () => {
@@ -213,8 +223,6 @@ class SearchBar extends React.Component {
     render(){
         return (
             <div className="SearchBar">
-                <AnchorLink href='#items'>Go to items</AnchorLink>
- 
                 <div>
                 <StyledAlert>{this.state.alertText}</StyledAlert>
                     <StyledLabel for="name">Find</StyledLabel>
