@@ -32,8 +32,7 @@ const StyledInput = styled.input`
     font-family: 'Quicksand', sans-serif;
     background-color: #fff;
     border: none;
-
-    max-width: 25vw;
+    width: 25vw;
     color: #666;
     font-size: 20px;
     padding: 10px 20px;
@@ -53,17 +52,15 @@ const StyledSubmit = styled(AnchorLink)`
     display: flex;
     justify-content:center;
     align-items: center;
-
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
-  border: none;
-  background-color: #d22828;
-  cursor: pointer;
-
-  width: 65px;
-  height: 45px;
-  font-size: 20px;
-  transition: 1s;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border: none;
+    background-color: #d22828;
+    cursor: pointer;
+    width: 65px;
+    height: 45px;
+    font-size: 20px;
+    transition: 1s;
     &:hover {
         background-color: #bd2525;
     }
@@ -85,7 +82,6 @@ const StyledSortOptions = styled.div`
     @media (max-width: 768px) {
         line-height: 10px;
     }
-
 `;
 
 const StyledOptions = styled.div`
@@ -96,24 +92,6 @@ const StyledOptions = styled.div`
     }
 `;
 
-
-const StyledBtn = styled.button`
-    padding: 20px;
-    border: 1px solid #03175b;
-    background-color: #fff;
-    margin: 20px;
-    margin-top: -10px;
-    border-radius: 25px;
-    letter-spacing: 3px;
-    font-family: "Montserrat", sans-serif;
-    cursor: pointer;
-    ${({active}) => (
-        active && css `
-        border: 3px solid #030221;
-        `
-    )}
-`;
-
 const StyledOption = styled.li`
     list-style: none;
     font-weight: normal;
@@ -121,45 +99,38 @@ const StyledOption = styled.li`
     justify-content: center;
     align-items: center;
     margin: 20px;
+    cursor: pointer;
     &:hover {
         text-decoration: underline;
     }
-
-    cursor: pointer;
     ${({active}) => (
         active && css `
         font-weight: bold;
         text-decoration: underline;
         `
     )}
-`;
 
-
-
-const StyledAlert = styled.p`
-text-align: center;
-color: #fff;
-margin-bottom: 10px;
-font-style: italic;
-opacity: 0.8;
-`;
-
-const OptionImg = styled.img`
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    &:first-child {
-        border-radius: 4px 0 0 4px;
+    img {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
     }
 `;
+
+const StyledAlert = styled.p`
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
+    font-style: italic;
+    opacity: 0.8;
+`;
+
 
 const sortByOptions = {
     'Best Match': 'best_match',
     'Highest Rated': 'rating',
     'Most Reviewed': 'review_count',
-    
 };
-
 
 class SearchBar extends React.Component {
     state = {
@@ -200,10 +171,10 @@ class SearchBar extends React.Component {
         } 
     }
 
-
     hadnleSortByChange = (sortByOption) => {
-        
-        this.setState({sortBy: sortByOption});
+        this.setState({
+            sortBy: sortByOption
+        });
         
         if (this.state.term && this.state.location) {
             this.setState({
@@ -221,42 +192,37 @@ class SearchBar extends React.Component {
         }
     }
 
-
-
-
-
     renderSortByOptions = () => {
         return Object.keys(sortByOptions).map(sortByOption => {
             let sortByOptionValue = sortByOptions[sortByOption];
             return (
- <StyledOption 
- key={sortByOptionValue} 
- 
- onClick={this.hadnleSortByChange.bind(this,sortByOptionValue)}
-
-
- active={this.state.sortBy === sortByOptionValue ? true : false }
- >
- <OptionImg 
- src={
-     sortByOptionValue === 'best_match' ? goal : 
-     sortByOptionValue === 'rating' ? star: review
-     } 
- alt={sortByOptionValue}/>
- {sortByOption}
- </StyledOption>
+                <StyledOption 
+                    key={sortByOptionValue} 
+                    onClick={this.hadnleSortByChange.bind(this,sortByOptionValue)}
+                    active={this.state.sortBy === sortByOptionValue ? true : false }
+                >
+                    <img
+                    src={
+                        sortByOptionValue === 'best_match' ? goal : 
+                        sortByOptionValue === 'rating' ? star: review
+                        } 
+                    alt={sortByOptionValue}/>
+                    {sortByOption}
+                </StyledOption>
             )
-           
         });
-      }
-
+    }
 
     render(){
         return (
-            <div className="SearchBar">
-                <StyledAlert>{this.state.alertText}</StyledAlert>
+            <>
+                <StyledAlert>
+                    {this.state.alertText}
+                </StyledAlert>
                 <StyledForm>
-                    <StyledLabel for="name">Find</StyledLabel>
+                    <StyledLabel for="name">
+                        Find
+                    </StyledLabel>
                     <StyledInput 
                         name="name" 
                         id="name" 
@@ -264,8 +230,9 @@ class SearchBar extends React.Component {
                         onChange={this.handleTermChange} 
                         placeholder="burgers, pizza, bars..." 
                     /> 
-
-                    <StyledLabel for="location">Near</StyledLabel>
+                    <StyledLabel for="location">
+                        Near
+                    </StyledLabel>
                     <StyledInput 
                         name="location" 
                         id="location" 
@@ -273,19 +240,26 @@ class SearchBar extends React.Component {
                         onChange={this.handleLocationChange} 
                         placeholder="Warsaw, PL" 
                     />
-                
-                    <StyledSubmit href='#items' onClick={this.handleSearch} type="submit" value=" "><StyledImg src={glass} alt="ravenous"/></StyledSubmit>
+                    <StyledSubmit 
+                        href='#items' 
+                        onClick={this.handleSearch} 
+                        type="submit" 
+                        value=" "
+                    >
+                        <StyledImg 
+                            src={glass} 
+                            alt="ravenous"
+                        />
+                    </StyledSubmit>
                 </StyledForm>
                 <StyledSortOptions>
                     <StyledOptions>
                         {this.renderSortByOptions()}
                     </StyledOptions>
                 </StyledSortOptions>
-
-            </div>
+            </>
         );
     }
-
 }
 
 export default SearchBar;
