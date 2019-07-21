@@ -179,15 +179,14 @@ class SearchBar extends React.Component {
 
  
     hadnleSortByChange = (sortByOption) => {
-        if (sortByOption) {
-        this.setState({sortBy: sortByOption});
-        } else {
-            this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
-        }
-       // this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
-        //this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);  
         
+        this.setState({sortBy: sortByOption});
+       // this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+        this.props.searchYelp(this.state.term, this.state.location, sortByOption);  
+       
     }
+
+
 
     elo = (sortByOption) => {
      
