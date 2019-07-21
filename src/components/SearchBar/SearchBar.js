@@ -134,7 +134,8 @@ const OptionImg = styled.img`
 const sortByOptions = {
     'Best Match': 'best_match',
     'Highest Rated': 'rating',
-    'Most Reviewed': 'review_count'
+    'Most Reviewed': 'review_count',
+    
 };
 
 
@@ -177,7 +178,7 @@ class SearchBar extends React.Component {
         } 
     }
 
- 
+
     hadnleSortByChange = (sortByOption) => {
         
         this.setState({sortBy: sortByOption});
