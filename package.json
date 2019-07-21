@@ -1,8 +1,8 @@
 {
-  "name": "finder",
+  "name": "ravenous",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://agnxr.github.io/finder",
+  "homepage": "http://agnxr.github.io/ravenous",
   "dependencies": {
     "react": "^16.8.6",
     "react-anchor-link-smooth-scroll": "^1.0.12",
@@ -10,7 +10,6 @@
     "react-router-dom": "^5.0.1",
     "react-router-hash-link": "^1.2.1",
     "react-scripts": "3.0.0",
-    "react-scrollable-anchor": "^0.6.1",
     "styled-components": "^4.3.2",
     "whatwg-fetch": "^3.0.0"
   },

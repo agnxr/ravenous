@@ -4,9 +4,9 @@ A Yelp-like clone App created using React.
 
 You can search the Yelp API for restaurants that match a search option.
 
-## 💻 Demo:
+## 💻 Demo
 
-http://agnxr.github.io/ravenous
+https://agnxr.github.io/ravenous
 
 ## 🔨 Technologies 
 
