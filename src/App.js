@@ -1,13 +1,13 @@
 import React from 'react';
+import styled, {css} from 'styled-components';
 import BusinessList from '../src/components/BusinessList/BusinessList';
 import SearchBar from '../src/components/SearchBar/SearchBar';
 import Loader from '../src/components/Loader/Loader';
 import Yelp from './util/Yelp';
+import GlobalStyle from './theme/GlobalStyle';
 import background from './assets/background.jpg';
 import title from './assets/logo.png';
 import logo from './assets/fd.svg';
-import GlobalStyle from './theme/GlobalStyle';
-import styled, {css} from 'styled-components';
 
 const StyledHero = styled.main`
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${background});
@@ -39,15 +39,14 @@ const StyledAlert = styled.p`
 `;
 
 class App extends React.Component {
- state = {
+  state = {
       businesses: [],
       error: '',
       info: '',
       loader: false
-    }
+  }
 
   searchYelp = (term, location,sortBy) => {
-    
     this.setState({ 
       info: '', 
       error: '', 

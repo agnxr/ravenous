@@ -109,7 +109,6 @@ const StyledOption = styled.li`
         text-decoration: underline;
         `
     )}
-
     img {
         width: 20px;
         height: 20px;
