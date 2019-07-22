@@ -1,24 +1,79 @@
 import React from 'react';
-import './Business.css';
 import PropTypes from 'prop-types';
 
 import star from '../../assets/star.svg';
 import flag from '../../assets/flag.svg';
 import rate from '../../assets/rating.svg';
+import bkp from '../../assets/backup-img.png'
 
 import styled, {css} from 'styled-components';
 
 const StyledAddress = styled.div`
-    font-family: 'Quicksand', sans-serif;
+    color: #666;
 
-    line-height:22px;
+
     a {
         text-decoration: none;
+        color: #666;
+        line-height: 28px;
+        &:hover {
+        text-decoration: underline;
+
+    
     }
+    }
+    
     img {
         width: 22px;
         height: auto;
     }
+
+`;
+
+const StyledImgContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background: #d22828;
+  height: 16.66rem;
+    margin-bottom: 1rem;
+    a {
+        display: block;
+        height: 16.66rem;
+    }
+   a img {
+    width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+   }
+`;
+
+
+
+const StyledItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 16.66rem;
+    margin: 0 .5rem 2.3rem .5rem;
+    h2 {
+    margin-bottom: .5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+`;
+
+const StyledItemDesc = styled.div`
+    display: flex;
+    justify-content: space-between;
+    
+    p {
+    font-size: .88rem;
+    font-weight: 300;
+    line-height: 1rem;
+  }
 `;
 
 const StyledReviews = styled.div`
@@ -45,18 +100,19 @@ font-family: 'Quicksand', sans-serif;
     }
 `;
 
+
 class Business extends React.Component {
     render(){
 
         const {business} = this.props;
         return (
-        <div className="Business">
-            <div className="image-container">
-                <a href={business.url} target = "_blank"><img src={business.imageSrc ? business.imageSrc : star} alt='' /></a>
-            </div>
+        <StyledItem>
+            <StyledImgContainer>
+                <a href={business.url} target = "_blank"><img src={business.imageSrc ? business.imageSrc : bkp } alt='' /></a>
+            </StyledImgContainer>
 
             <h2>{business.name}</h2>
-            <div className="Business-information">
+            <StyledItemDesc>
                 <StyledAddress>
                
                 <a href={`https://maps.google.com/?q=${business.name},${business.address}&sll=${business.lat},${business.long}`} target = "_blank">
@@ -71,12 +127,13 @@ class Business extends React.Component {
                 <StyledReviews>
                     <h3>{business.category}</h3>
                     <div>
-                    <h3 className="rating">{business.rating}</h3><img src={rate} alt=''/>
+                    <h3>{business.rating}</h3>
+                    <img src={rate} alt=''/>
                     </div>
                     <p>{business.reviewCount} reviews</p>
                 </StyledReviews>
-            </div>
-        </div>
+            </StyledItemDesc>
+        </StyledItem>
         )
     }
 }

@@ -67,7 +67,7 @@ const StyledSubmit = styled(AnchorLink)`
 `;
 
 const StyledImg = styled.img`
-  width: 25px;
+    width: 25px;
 `;
 
 const StyledSortOptions = styled.div`

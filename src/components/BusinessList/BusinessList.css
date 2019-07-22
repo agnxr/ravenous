@@ -7,13 +7,7 @@
 
   /* Reusable Component - Image Container */
 
-.image-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-  background: #223E4A;
-}
+
 .image-container img a {
 background-color: red;
 
