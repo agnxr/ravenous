@@ -4,18 +4,6 @@ A Yelp-like clone App created using React.
 
 You can search the Yelp API for restaurants that match a search option.
 
-## 💻 Demo
-
-https://agnxr.github.io/ravenous
-
-![screencapture-localhost-3000-2019-07-22-11_05_37](https://user-images.githubusercontent.com/32043294/61620277-d9172c80-ac70-11e9-81b8-093f25367222.png)
-
-## 🔨 Technologies 
-
-* React
-* Interacting with the Yelp API
-* Styled Components
-
 ## 🕹 Features
 
 Here’s a quick overview of Ravenous features:
@@ -27,6 +15,17 @@ Here’s a quick overview of Ravenous features:
 * Images are clickable - the user is able to open the Yelp business’ website in a new tab
 * Clicking on a different sorting option automatically requeries the Yelp API
 * The page allow you to search by pressing “Enter” on your keyboard, as opposed to manually clicking
+
+## 💻 Demo
+
+https://agnxr.github.io/ravenous
+
+![screencapture-localhost-3000-2019-07-22-11_05_37](https://user-images.githubusercontent.com/32043294/61620277-d9172c80-ac70-11e9-81b8-093f25367222.png)
+## 🔨 Technologies 
+
+* React
+* Interacting with the Yelp API
+* Styled Components
 
 ## 🔧 Installation
 
