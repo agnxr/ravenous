@@ -20,7 +20,7 @@ Here’s a quick overview of Ravenous features:
 
 https://agnxr.github.io/ravenous
 
-![screencapture-localhost-3000-2019-07-22-11_05_37](https://user-images.githubusercontent.com/32043294/61620277-d9172c80-ac70-11e9-81b8-093f25367222.png)
+![screen](https://user-images.githubusercontent.com/32043294/61620659-943fc580-ac71-11e9-8515-b05e549552ce.png)
 ## 🔨 Technologies 
 
 * React
