@@ -1,16 +1,23 @@
 {
   "files": {
-    "main.css": "/finder/static/css/main.4d37c6ef.chunk.css",
-    "main.js": "/finder/static/js/main.c804bfa6.chunk.js",
-    "main.js.map": "/finder/static/js/main.c804bfa6.chunk.js.map",
-    "runtime~main.js": "/finder/static/js/runtime~main.473f2b9b.js",
-    "runtime~main.js.map": "/finder/static/js/runtime~main.473f2b9b.js.map",
-    "static/js/2.3d3e5e3a.chunk.js": "/finder/static/js/2.3d3e5e3a.chunk.js",
-    "static/js/2.3d3e5e3a.chunk.js.map": "/finder/static/js/2.3d3e5e3a.chunk.js.map",
-    "index.html": "/finder/index.html",
-    "precache-manifest.c57522446aea8d33a43dbd874c708c05.js": "/finder/precache-manifest.c57522446aea8d33a43dbd874c708c05.js",
-    "service-worker.js": "/finder/service-worker.js",
-    "static/css/main.4d37c6ef.chunk.css.map": "/finder/static/css/main.4d37c6ef.chunk.css.map",
-    "static/media/logo.png": "/finder/static/media/logo.288e34f4.png"
+    "main.js": "/ravenous/static/js/main.935d7429.chunk.js",
+    "main.js.map": "/ravenous/static/js/main.935d7429.chunk.js.map",
+    "runtime~main.js": "/ravenous/static/js/runtime~main.f8ce170b.js",
+    "runtime~main.js.map": "/ravenous/static/js/runtime~main.f8ce170b.js.map",
+    "static/js/2.8b7c697d.chunk.js": "/ravenous/static/js/2.8b7c697d.chunk.js",
+    "static/js/2.8b7c697d.chunk.js.map": "/ravenous/static/js/2.8b7c697d.chunk.js.map",
+    "index.html": "/ravenous/index.html",
+    "precache-manifest.3897a4e51d1a1c6a3e9dc0000a7c1c69.js": "/ravenous/precache-manifest.3897a4e51d1a1c6a3e9dc0000a7c1c69.js",
+    "service-worker.js": "/ravenous/service-worker.js",
+    "static/media/background.jpg": "/ravenous/static/media/background.22cb4901.jpg",
+    "static/media/backup-img.png": "/ravenous/static/media/backup-img.ce4c8fb1.png",
+    "static/media/fd.svg": "/ravenous/static/media/fd.c151eb53.svg",
+    "static/media/flag.svg": "/ravenous/static/media/flag.663f2319.svg",
+    "static/media/goal.svg": "/ravenous/static/media/goal.3ab7a478.svg",
+    "static/media/logo.png": "/ravenous/static/media/logo.86e21aff.png",
+    "static/media/magnifying-glass.svg": "/ravenous/static/media/magnifying-glass.68bd2a3c.svg",
+    "static/media/rating.svg": "/ravenous/static/media/rating.ad9e7c6c.svg",
+    "static/media/star.svg": "/ravenous/static/media/star.83da7794.svg",
+    "static/media/testimonial.svg": "/ravenous/static/media/testimonial.9280fe6b.svg"
   }
 }
